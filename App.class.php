@@ -139,14 +139,4 @@ class App implements IF_UNIT, IF_APP
 		require_once(__DIR__.'/function/Title.php');
 		return APP\Title($title, $separator);
 	}
-
-	/** Unique User ID.
-	 *
-	 * @return  string  $uuid
-	 */
-	static function UUID() : string
-	{
-		require_once(__DIR__.'/function/UUID.php');
-		return APP\UUID();
-	}
 }

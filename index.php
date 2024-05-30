@@ -20,12 +20,6 @@ declare(strict_types=1);
  */
 namespace OP;
 
-/** Load
- *
- */
-Unit::Load('Router');
-Unit::Load('Layout');
-
 /** Include
  *
  */

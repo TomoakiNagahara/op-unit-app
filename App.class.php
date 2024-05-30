@@ -86,8 +86,11 @@ class App implements IF_UNIT, IF_APP
 					$ext = substr($endpoint, strrpos($endpoint, '.') + 1);
 
 					//	Get MIME
+					/*
 					include(__DIR__.'/function/GetMIME.php');
 					$mime = APP\GetMIME($ext);
+					*/
+					OP()->GetMimeFromExtension($ext);
 
 					//	Set MIME
 					Env::Mime($mime);
@@ -121,7 +124,7 @@ class App implements IF_UNIT, IF_APP
 				*/
 
 				// TODO: CompressPath() every time is useless.
-				Template(CompressPath($endpoint), [], true, true);
+				OP()->Template(CompressPath($endpoint), [], true, true);
 			};
 		}catch( \Throwable $e ){
 			OP()->Notice($e);

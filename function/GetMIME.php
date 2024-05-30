@@ -20,6 +20,7 @@ use OP\Notice;
 
 /** Get MIME from extension.
  *
+ * @deprecated 2024-05-30
  */
 function GetMIME(string $ext):string
 {

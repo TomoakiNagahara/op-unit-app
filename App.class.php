@@ -73,7 +73,7 @@ class App implements IF_UNIT, IF_APP
 				};
 
 				//	Execute End-Point.
-				$hash = Content(CompressPath($endpoint), ['app'=>$this]);
+				$hash = Content($endpoint);
 
 				//	ETag
 				if( Config::Get('app')['etag'] ?? null ){

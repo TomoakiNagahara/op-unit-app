@@ -80,35 +80,8 @@ class App implements IF_UNIT, IF_APP
 					Unit('ETag')->Auto($hash);
 				}
 
-				//	Set mime if empty.
-				if(!$mime = Env::Mime() ){
-					//	Get extension
-					$ext = substr($endpoint, strrpos($endpoint, '.') + 1);
-
-					//	Get MIME
-					/*
-					include(__DIR__.'/function/GetMIME.php');
-					$mime = APP\GetMIME($ext);
-					*/
-					OP()->GetMimeFromExtension($ext);
-
-					//	Set MIME
-					Env::Mime($mime);
-				}
-
 				//	Do the Layout.
 				Unit('Layout')->Auto();
-
-				/*
-				//	Check whether to do layout.
-				if( $mime === 'text/html' and Env::Get('layout')['execute'] ?? null ){
-					//	Do layout.
-					$this->__LAYOUT();
-				}else{
-					//	No layout.
-					Content();
-				};
-				*/
 
 			}else{
 				/*

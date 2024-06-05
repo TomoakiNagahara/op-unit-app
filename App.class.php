@@ -24,14 +24,12 @@ namespace OP\UNIT;
 use OP\IF_UNIT;
 use OP\IF_APP;
 use OP\OP_CORE;
-use OP\OP_UNIT;
-use OP\OP_SESSION;
 use OP\Env;
 use OP\Config;
 use function OP\Unit;
 use function OP\Content;
 use function OP\RootPath;
-use function OP\CompressPath;
+use function OP\ConvertPath;
 
 /** App
  *
@@ -46,7 +44,7 @@ class App implements IF_UNIT, IF_APP
 	/** trait.
 	 *
 	 */
-	use OP_CORE, OP_UNIT, OP_SESSION;
+	use OP_CORE;
 
 	/** SmartURL Arguments.
 	 *

@@ -66,8 +66,8 @@ class App implements IF_UNIT, IF_APP
 			//	Is http?
 			if( Env::isHttp() ){
 
-				//	Check end-point if asset directory.
-				if( strpos($endpoint, RootPath('asset')) === 0 ){
+				//	Check end-point if not in app directory.
+				if( strpos($endpoint, RootPath('app')) !== 0 ){
 					//	Overwrite end-point.
 					$endpoint = ConvertPath('app:/404.php');
 				};

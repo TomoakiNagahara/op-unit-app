@@ -84,20 +84,8 @@ class App implements IF_UNIT, IF_APP
 				Unit('Layout')->Auto();
 
 			}else{
-				/*
-				//	In case of shell
-				$root = $_SERVER['PWD'].'/';
-				$path = $_SERVER['argv'][1] ?? 'index.php';
-				$file = $root . $path;
-
-				//	...
-				if(!$endpoint = realpath($file) ){
-					throw new Exception("This file has not been exists. ($file)");
-				};
-				*/
-
-				// TODO: CompressPath() every time is useless.
-				OP()->Template(CompressPath($endpoint), [], true, true);
+				//	Execute End-Point.
+				$hash = Content($endpoint);
 			};
 		}catch( \Throwable $e ){
 			OP()->Notice($e);

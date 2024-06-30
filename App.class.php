@@ -61,6 +61,12 @@ class App implements IF_UNIT, IF_APP
 			//	Get End-Point.
 			$endpoint = Unit('Router')->EndPoint();
 
+			//	End-Point is not install.
+			if(!$endpoint ){
+				echo 'End-Point is not install. (index.php)';
+				return;
+			}
+
 			//	Is http?
 			if( Env::isHttp() ){
 

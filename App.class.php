@@ -25,11 +25,13 @@ use OP\IF_UNIT;
 use OP\IF_APP;
 use OP\OP_CORE;
 use OP\Env;
+/*
 use OP\Config;
 use function OP\Unit;
 use function OP\Content;
 use function OP\RootPath;
 use function OP\ConvertPath;
+*/
 
 /** App
  *
@@ -53,12 +55,19 @@ class App implements IF_UNIT, IF_APP
 	 */
 	private $_args;
 
+	/** Content
+	 *
+	 * @var string
+	 */
+	private $_content;
+
 	/** Automatically.
 	 *
 	 */
 	function Auto()
 	{
 		try{
+			/*
 			//	Get End-Point.
 			$endpoint = Unit('Router')->EndPoint();
 
@@ -92,6 +101,49 @@ class App implements IF_UNIT, IF_APP
 				//	Execute End-Point.
 				$hash = Content($endpoint);
 			};
+			*/
+
+			//	Get End-Point.
+			if(!$endpoint = OP()->Unit()->Router()->EndPoint() ){
+				return;
+			}
+
+			//	OB is start.
+			ob_start();
+
+			//	Save original directory.
+			$_original_directory = getcwd();
+
+			//	Change to the end-point directory.
+			chdir( dirname($endpoint) );
+
+			//	Execute the end-point.
+			require_once($endpoint);
+
+			//	Recovery original directory.
+			chdir($_original_directory);
+
+			//	Get and store content, And finished OB.
+			$this->_content = ob_get_clean();
+
+			//	ETag returned value is whether matched.
+			if( $this->Etag() ){
+				//	ETag is matched.
+				//	Not return content and Layout to client browser.
+				$this->_content = null;
+				//	...
+				return;
+			}
+
+			//	...
+			if( Env::MIME() === 'text/html' ){
+				//	Do Layout.
+				OP()->Unit()->Layout()->Auto();
+			}else{
+				//	Do no Layout.
+				$this->Content();
+			}
+
 		}catch( \Throwable $e ){
 			OP()->Notice($e);
 		};

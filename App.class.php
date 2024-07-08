@@ -149,6 +149,18 @@ class App implements IF_UNIT, IF_APP
 		};
 	}
 
+	/** Output content.
+	 *
+	 *  This method is intended to be called from a Layout.
+	 *
+	 * @revival  2024-07-08
+	 */
+	public function Content()
+	{
+		echo $this->_content;
+		$this->_content = null;
+	}
+
 	/** Get/Set Title for HTML's title tag.
 	 *
 	 * @param  string  $title

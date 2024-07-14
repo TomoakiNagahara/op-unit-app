@@ -135,6 +135,12 @@ class App implements IF_UNIT, IF_APP
 				return;
 			}
 
+		}catch( \Throwable $e ){
+			OP()->Notice($e);
+		};
+
+		//	...
+		try{
 			//	...
 			if( Env::MIME() === 'text/html' ){
 				//	Do Layout.
@@ -143,7 +149,6 @@ class App implements IF_UNIT, IF_APP
 				//	Do no Layout.
 				$this->Content();
 			}
-
 		}catch( \Throwable $e ){
 			OP()->Notice($e);
 		};

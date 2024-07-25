@@ -104,7 +104,7 @@ class App implements IF_UNIT, IF_APP
 			*/
 
 			//	Get End-Point.
-			if(!$endpoint = OP()->Unit()->Router()->EndPoint() ){
+			if(!$endpoint = OP()->Router()->EndPoint() ){
 				return;
 			}
 
@@ -144,7 +144,7 @@ class App implements IF_UNIT, IF_APP
 			//	...
 			if( Env::MIME() === 'text/html' ){
 				//	Do Layout.
-				OP()->Unit()->Layout()->Auto();
+				OP()->Layout()->Auto();
 			}else{
 				//	Do no Layout.
 				$this->Content();

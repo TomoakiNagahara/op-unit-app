@@ -21,17 +21,10 @@ namespace OP\UNIT;
 /** Used class.
  *
  */
+use OP\OP_CORE;
 use OP\IF_UNIT;
 use OP\IF_APP;
-use OP\OP_CORE;
 use OP\Env;
-/*
-use OP\Config;
-use function OP\Unit;
-use function OP\Content;
-use function OP\RootPath;
-use function OP\ConvertPath;
-*/
 
 /** App
  *
@@ -62,42 +55,6 @@ class App implements IF_UNIT, IF_APP
 	{
 		//	Execute the end-point.
 		try{
-			/*
-			//	Get End-Point.
-			$endpoint = Unit('Router')->EndPoint();
-
-			//	End-Point is not install.
-			if(!$endpoint ){
-				echo 'End-Point is not install. (index.php)';
-				return;
-			}
-
-			//	Is http?
-			if( Env::isHttp() ){
-
-				//	Check end-point if not in app directory.
-				if( strpos($endpoint, RootPath('app')) !== 0 ){
-					//	Overwrite end-point.
-					$endpoint = ConvertPath('app:/404.php');
-				};
-
-				//	Execute End-Point.
-				$hash = Content($endpoint);
-
-				//	ETag
-				if( Config::Get('app')['etag'] ?? null ){
-					Unit('ETag')->Auto($hash);
-				}
-
-				//	Do the Layout.
-				Unit('Layout')->Auto();
-
-			}else{
-				//	Execute End-Point.
-				$hash = Content($endpoint);
-			};
-			*/
-
 			//	Get End-Point.
 			if(!$endpoint = OP()->Router()->EndPoint() ){
 				return;

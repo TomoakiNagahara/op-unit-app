@@ -141,7 +141,7 @@ class App implements IF_UNIT, IF_APP
 				OP()->Layout()->Auto();
 			}else{
 				//	Do no Layout.
-				$this->Content();
+				self::Content();
 			}
 		}catch( \Throwable $e ){
 			OP()->Notice($e);
@@ -154,7 +154,7 @@ class App implements IF_UNIT, IF_APP
 	 *
 	 * @revival  2024-07-08
 	 */
-	public function Content()
+	static public function Content()
 	{
 		echo self::$_content;
 		self::$_content = null;

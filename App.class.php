@@ -121,7 +121,7 @@ class App implements IF_UNIT, IF_APP
 			self::$_content = ob_get_clean();
 
 			//	ETag returned value is whether matched.
-			if( $this->Etag() ){
+			if( self::Etag() ){
 				//	ETag is matched.
 				//	Not return content and Layout to client browser.
 				self::$_content = null;
@@ -167,7 +167,7 @@ class App implements IF_UNIT, IF_APP
 	 * @revival  2024-07-08
 	 * @return   bool
 	 */
-	private function ETag() : bool
+	static private function ETag() : bool
 	{
 		//	Generate ETag.
 		$etag = md5($this->_content);

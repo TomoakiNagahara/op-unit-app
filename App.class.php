@@ -60,6 +60,7 @@ class App implements IF_UNIT, IF_APP
 	 */
 	function Auto()
 	{
+		//	Execute the end-point.
 		try{
 			/*
 			//	Get End-Point.
@@ -133,12 +134,26 @@ class App implements IF_UNIT, IF_APP
 			OP()->Notice($e);
 		};
 
-		//	...
+		//	Execute the Layout.
 		try{
 			//	...
 			if( Env::MIME() === 'text/html' ){
+				/** Flexible access methods is a great treasure in onepiece
+				 *
+				 *  1. Hard code to layout from namespace.
+				 *  \OP\UNIT\Layout::Auto();
+				 *
+				 *  2. OP() function is change to specification. This method is not work.
+				 *  OP()->Layout()->Auto();
+				 *
+				 *  3. Use always an already instantiated object.
+				 *  OP()->Unit('Layout')->Auto();
+				 *
+				 *  4. Returns the normalized object for the interface.
+				 *  OP()->Unit()->Layout()->Auto();
+				 */
 				//	Do Layout.
-				OP()->Layout()->Auto();
+				OP()->Unit('Layout')->Auto();
 			}else{
 				//	Do no Layout.
 				self::Content();

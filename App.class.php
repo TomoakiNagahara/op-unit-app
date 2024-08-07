@@ -49,12 +49,6 @@ class App implements IF_UNIT, IF_APP
 	use OP_CORE;
 	use \OP\OP_CI;
 
-	/** SmartURL Arguments.
-	 *
-	 * @var array
-	 */
-	private $_args;
-
 	/** Content
 	 *
 	 * @var string

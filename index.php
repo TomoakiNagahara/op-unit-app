@@ -36,6 +36,6 @@ require_once(__DIR__.'/App.class.php');
  */
 /*
 register_shutdown_function(function(){
-	OP()->App()->Content();
+	\OP\UNIT\App::Content();
 });
 */

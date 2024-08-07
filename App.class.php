@@ -53,7 +53,7 @@ class App implements IF_UNIT, IF_APP
 	 *
 	 * @var string
 	 */
-	private $_content;
+	static private $_content;
 
 	/** Automatically.
 	 *
@@ -118,13 +118,13 @@ class App implements IF_UNIT, IF_APP
 			chdir($_original_directory);
 
 			//	Get and store content, And finished OB.
-			$this->_content = ob_get_clean();
+			self::$_content = ob_get_clean();
 
 			//	ETag returned value is whether matched.
 			if( $this->Etag() ){
 				//	ETag is matched.
 				//	Not return content and Layout to client browser.
-				$this->_content = null;
+				self::$_content = null;
 				//	...
 				return;
 			}
@@ -156,8 +156,8 @@ class App implements IF_UNIT, IF_APP
 	 */
 	public function Content()
 	{
-		echo $this->_content;
-		$this->_content = null;
+		echo self::$_content;
+		self::$_content = null;
 	}
 
 	/** Check if the ETag matches.

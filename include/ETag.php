@@ -19,6 +19,11 @@ declare(strict_types=1);
  */
 namespace OP\UNIT\APP;
 
+//	...
+if( \OP\Env::isCI() ){
+	return false;
+}
+
 //	Generate ETag.
 $etag = md5(self::$_content);
 $etag = substr($etag, 0, 10);

@@ -45,5 +45,11 @@ $args   = 'CI';
 $result = 'CI | The onepiece-framework app skeleton 2024';
 $ci->Set($method, $result, $args);
 
+//	Hash
+$method = 'Hash';
+$args   =  null;
+$result =  null;
+$ci->Set($method, $result, $args);
+
 //	...
 return $ci->Get();

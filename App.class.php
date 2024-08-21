@@ -132,6 +132,17 @@ class App implements IF_UNIT, IF_APP
 		self::$_content = null;
 	}
 
+	/** Return hash from self::$_content.
+	 *
+	 * @created    2024-08-20
+	 * @return     string|null  $hash
+	 */
+	static public function Hash()
+	{
+		//	...
+		return self::$_content ? md5(self::$_content) : null;
+	}
+
 	/** Check if the ETag matches.
 	 *
 	 *  ETag is save on transfer volume.

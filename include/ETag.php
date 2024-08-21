@@ -25,7 +25,10 @@ if( \OP\Env::isCI() ){
 }
 
 //	Generate ETag.
+/*
 $etag = md5(self::$_content);
+*/
+$etag = self::Hash();
 $etag = substr($etag, 0, 10);
 
 //	If-None-Match

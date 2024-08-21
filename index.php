@@ -36,6 +36,12 @@ require_once(__DIR__.'/App.class.php');
  */
 /*
 register_shutdown_function(function(){
+	//	...
+	if( \OP\UNIT\App::Hash() ){
+		Notice::Set("The Layout is not calling `App::Content()`");
+	}
+
+	//	...
 	\OP\UNIT\App::Content();
 });
 */

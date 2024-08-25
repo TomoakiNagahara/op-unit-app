@@ -42,7 +42,7 @@ $ci->Set($method, $result, $args);
 //	Title
 $method = 'Title';
 $args   = 'CI';
-$result = 'CI | The onepiece-framework app skeleton 2024';
+$result = 'CI | The onepiece-framework app skeleton ' . _OP_APP_BRANCH_;
 $ci->Set($method, $result, $args);
 
 //	Hash

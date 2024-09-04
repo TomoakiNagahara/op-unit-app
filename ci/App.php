@@ -42,7 +42,12 @@ $ci->Set($method, $result, $args);
 //	Title
 $method = 'Title';
 $args   = 'CI';
-$result = 'CI | The onepiece-framework app skeleton ' . _OP_APP_BRANCH_;
+if( $title = OP()->Config('app')['title'] ?? null ){
+	$title = $args . ' | ' . $title;
+}else{
+	$title = $args;
+}
+$result = $title;
 $ci->Set($method, $result, $args);
 
 //	Hash

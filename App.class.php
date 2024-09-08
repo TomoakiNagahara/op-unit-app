@@ -153,6 +153,7 @@ class App implements IF_UNIT, IF_APP
 	 *
 	 *  ETag is save on transfer volume.
 	 *
+	 * @deprecated 2024-09-08
 	 * @revival  2024-07-08
 	 * @return   bool
 	 */

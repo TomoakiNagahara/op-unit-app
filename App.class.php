@@ -78,6 +78,10 @@ class App implements IF_UNIT, IF_APP
 			//	Get and store content, And finished OB.
 			self::$_content = ob_get_clean();
 
+			/** ETag are now a separate unit.
+			 *
+			 * @updated    2024-09-08
+			 *
 			//	ETag returned value is whether matched.
 			if( self::Etag() ){
 				//	ETag is matched.
@@ -86,6 +90,7 @@ class App implements IF_UNIT, IF_APP
 				//	...
 				return;
 			}
+			*/
 
 		}catch( \Throwable $e ){
 			OP()->Notice($e);

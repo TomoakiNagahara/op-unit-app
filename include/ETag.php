@@ -28,7 +28,7 @@ if( \OP\Env::isCI() ){
 /*
 $etag = md5(self::$_content);
 */
-$etag = self::Hash();
+$etag = self::Hash() ?? '';
 $etag = substr($etag, 0, 10);
 
 //	If-None-Match

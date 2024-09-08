@@ -139,6 +139,7 @@ class App implements IF_UNIT, IF_APP
 
 	/** Return hash from self::$_content.
 	 *
+	 * @deprecated 2024-09-08
 	 * @created    2024-08-20
 	 * @return     string|null  $hash
 	 */

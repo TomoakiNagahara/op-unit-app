@@ -24,12 +24,8 @@ if( \OP\Env::isCI() ){
 	return false;
 }
 
-//	Generate ETag.
-/*
-$etag = md5(self::$_content);
-*/
-$etag = self::Hash() ?? '';
-$etag = substr($etag, 0, 10);
+/* @var $etag string */
+/* @var $age  int    */
 
 //	If-None-Match
 if( $client_etag = $_SERVER['HTTP_IF_NONE_MATCH'] ?? null ){
@@ -38,21 +34,6 @@ if( $client_etag = $_SERVER['HTTP_IF_NONE_MATCH'] ?? null ){
 		header('HTTP/1.1 304 Not Modified');
 		return true;
 	}
-}
-
-//	If do not set a cache expiration time, the ETag will expire immediately.
-if( $age = OP()->Config('app')['age'] ?? null ){
-	//	OK
-}else if( \OP\Env::MIME() === 'text/html' ){
-	$age = 0;
-}else{
-	//	Browser will no to request 24 hours.
-	$age = 60 * 60 * 24;
-}
-
-//	Does not set an ETag.
-if( empty($age) ){
-	return false;
 }
 
 //	Set ETag.

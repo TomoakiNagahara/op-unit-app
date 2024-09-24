@@ -50,11 +50,5 @@ if( $title = OP()->Config('app')['title'] ?? null ){
 $result = $title;
 $ci->Set($method, $result, $args);
 
-//	Hash
-$method = 'Hash';
-$args   =  null;
-$result =  null;
-$ci->Set($method, $result, $args);
-
 //	...
 return $ci->Get();

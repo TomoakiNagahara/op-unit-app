@@ -35,7 +35,7 @@ $ci->Set($method, $result, $args);
 
 //	ETag
 $method = 'ETag';
-$args   =  null;
+$args   = 'TestOfCI';
 $result =  false;
 $ci->Set($method, $result, $args);
 

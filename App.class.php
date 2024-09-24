@@ -78,20 +78,6 @@ class App implements IF_UNIT, IF_APP
 			//	Get and store content, And finished OB.
 			self::$_content = ob_get_clean();
 
-			/** ETag are now a separate unit.
-			 *
-			 * @updated    2024-09-08
-			 *
-			//	ETag returned value is whether matched.
-			if( self::Etag() ){
-				//	ETag is matched.
-				//	Not return content and Layout to client browser.
-				self::$_content = null;
-				//	...
-				return;
-			}
-			*/
-
 		}catch( \Throwable $e ){
 			OP()->Notice($e);
 		};
@@ -139,13 +125,17 @@ class App implements IF_UNIT, IF_APP
 
 	/** Check if the ETag matches.
 	 *
+	 * <pre>
 	 *  ETag is save on transfer volume.
+	 *  Return true is match ETag.
+	 *  "HTTP/1.1 304 Not Modified" header was returned.
+	 *  If return false, You output the content.
+	 * </pre>
 	 *
-	 * @deprecated 2024-09-08
 	 * @revival  2024-07-08
 	 * @return   bool
 	 */
-	static private function ETag() : bool
+	static private function ETag(string $etag, int $age=3600) : bool
 	{
 		return include(__DIR__.'/include/ETag.php');
 	}

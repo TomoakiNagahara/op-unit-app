@@ -23,4 +23,4 @@ namespace OP;
 /** Include
  *
  */
-include(__DIR__.'/App.class.php');
+require_once(__DIR__.'/App.class.php');

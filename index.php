@@ -27,3 +27,15 @@ namespace OP;
 include(__DIR__.'/App.class.php');
 */
 require_once(__DIR__.'/App.class.php');
+
+/** If Content() is not called from anywhere, Content will be output now.
+ *
+ * @genesis   2009-??-?? op-core-4?
+ * @moved     2021-05-05 op-core-7:/function/Content.php
+ * @moved     2024-07-08 op-unit-app:/index.php
+ */
+/*
+register_shutdown_function(function(){
+	OP()->Unit()->App()->Content();
+});
+*/

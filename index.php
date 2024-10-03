@@ -43,5 +43,6 @@ register_shutdown_function(function(){
 
 	//	...
 	\OP\UNIT\App::Content();
+	OP()->Unit()->App()->Content();
 });
 */

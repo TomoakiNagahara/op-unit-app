@@ -149,7 +149,7 @@ class App implements IF_UNIT, IF_APP
 	 * @param  string  $separator
 	 * @return string  $title
 	 */
-	static function Title($title=null, $separator=' | ') : ?string
+	static function Title($title=null, $separator=' | ')
 	{
 		require_once(__DIR__.'/function/Title.php');
 		return APP\Title($title, $separator);

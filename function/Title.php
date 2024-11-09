@@ -24,7 +24,7 @@ namespace OP\UNIT\APP;
  * @param  string  $separator
  * @return string  $title
  */
-function Title($title=null, $separator=' | ') : ?string
+function Title($title=null, $separator=' | ')
 {
 	//	define
 	static $_title;

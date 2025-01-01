@@ -23,9 +23,6 @@ namespace OP;
 /** Include
  *
  */
-/*
-include(__DIR__.'/App.class.php');
-*/
 require_once(__DIR__.'/App.class.php');
 
 /** If Content() is not called from anywhere, Content will be output now.
@@ -42,8 +39,6 @@ register_shutdown_function(function(){
 	}
 
 	//	...
-	\OP\UNIT\App::Content();
-	OP()->App()->Content();
 	OP()->Unit()->App()->Content();
 });
 */

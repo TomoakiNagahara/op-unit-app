@@ -24,6 +24,7 @@ namespace OP\UNIT;
 use OP\OP_CORE;
 use OP\IF_UNIT;
 use OP\IF_APP;
+use OP\OP_CI;
 
 /**	App
  *
@@ -39,7 +40,7 @@ class App implements IF_UNIT, IF_APP
 	 *
 	 */
 	use OP_CORE;
-	use \OP\OP_CI;
+	use OP_CI;
 
 	/**	Content
 	 *

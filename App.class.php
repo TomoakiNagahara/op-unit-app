@@ -47,6 +47,22 @@ class App implements IF_APP
 	 */
 	static private $_content;
 
+	/**	Destruct
+	 *
+	 * @created    2025-06-24
+	 */
+	function __destruct()
+	{
+		//	...
+		self::Content();
+
+		//	...
+		if( OP()->isAdmin() ){
+			//	...
+			include(__DIR__.'/include/memory_usage.php');
+		}
+	}
+
 	/**	Automatically.
 	 *
 	 */

@@ -22,7 +22,6 @@ namespace OP\UNIT;
  *
  */
 use OP\OP_CORE;
-use OP\IF_UNIT;
 use OP\IF_APP;
 use OP\OP_CI;
 
@@ -34,7 +33,7 @@ use OP\OP_CI;
  * @author     Tomoaki Nagahara
  * @copyright  Tomoaki Nagahara All right reserved.
  */
-class App implements IF_UNIT, IF_APP
+class App implements IF_APP
 {
 	/**	trait.
 	 *

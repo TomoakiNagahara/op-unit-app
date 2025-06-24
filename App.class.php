@@ -24,7 +24,6 @@ namespace OP\UNIT;
 use OP\OP_CORE;
 use OP\IF_UNIT;
 use OP\IF_APP;
-use OP\Env;
 
 /**	App
  *
@@ -79,7 +78,7 @@ class App implements IF_UNIT, IF_APP
 		//	Execute the Layout.
 		try{
 			//	...
-			if( Env::MIME() === 'text/html' ){
+			if( OP()->MIME() === 'text/html' ){
 				/**	Flexible access methods is a great treasure in onepiece
 				 *
 				 *  1. Hard code to layout from namespace.

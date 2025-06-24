@@ -75,11 +75,23 @@ class App implements IF_APP
 				return;
 			}
 
+			//	For HTML Pass Through
+			$extension = substr($endpoint, strrpos($endpoint, '.')+1);
+
+			//	MIME
+			$mime = OP()->MIME($extension);
+
+			//	Not text
+			if( strpos($mime, 'text/') === false ){
+				echo file_get_contents($endpoint);
+				return;
+			}
+
 			//	OB is start.
 			ob_start();
 
 			//	Since the full path cannot be used, It is convert to a meta path.
-			$endpoint = OP()->MetaPath($endpoint);
+			$endpoint = OP()->Path($endpoint);
 
 			//	Execute the End-Point.
 			OP()->Template($endpoint);
@@ -87,36 +99,20 @@ class App implements IF_APP
 			//	Get and store content, And finished OB.
 			self::$_content = ob_get_clean();
 
-		}catch( \Throwable $e ){
-			OP()->Notice($e);
-		};
+			//	Save memory usage.
+			ob_end_clean();
 
-		//	Execute the Layout.
-		try{
 			//	...
 			if( OP()->MIME() === 'text/html' ){
-				/**	Flexible access methods is a great treasure in onepiece
-				 *
-				 *  1. Hard code to layout from namespace.
-				 *  \OP\UNIT\Layout::Auto();
-				 *
-				 *  2. OP() function is change to specification. This method is not work.
-				 *  OP()->Layout()->Auto();
-				 *
-				 *  3. Use always an already instantiated object.
-				 *  OP()->Unit('Layout')->Auto();
-				 *
-				 *  4. Returns the normalized object for the interface.
-				 *  OP()->Unit()->Layout()->Auto();
-				 */
 				//	Do Layout.
-				OP()->Unit('Layout')->Auto();
+				OP()->Unit()->Layout()->Auto();
 			}else{
 				//	Do no Layout.
 				self::Content();
 			}
+
 		}catch( \Throwable $e ){
-			OP()->Notice($e);
+			OP()->Error($e);
 		};
 	}
 

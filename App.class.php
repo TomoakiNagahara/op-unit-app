@@ -1,24 +1,24 @@
 <?php
-/** op-unit-app:/App.class.php
+/**	op-unit-app:/App.class.php
  *
- * @created   2018-04-04
- * @version   1.0
- * @package   op-unit-app
- * @author    Tomoaki Nagahara <tomoaki.nagahara@gmail.com>
- * @copyright Tomoaki Nagahara All right reserved.
+ * @created    2018-04-04
+ * @version    1.0
+ * @package    op-unit-app
+ * @author     Tomoaki Nagahara
+ * @copyright  Tomoaki Nagahara All right reserved.
  */
 
-/** Declare strict
+/**	Declare strict
  *
  */
 declare(strict_types=1);
 
-/** namespace
+/**	namespace
  *
  */
 namespace OP\UNIT;
 
-/** Used class.
+/**	Used class.
  *
  */
 use OP\OP_CORE;
@@ -26,29 +26,29 @@ use OP\IF_UNIT;
 use OP\IF_APP;
 use OP\Env;
 
-/** App
+/**	App
  *
- * @created   2018-04-04
- * @version   1.0
- * @package   op-unit-app
- * @author    Tomoaki Nagahara <tomoaki.nagahara@gmail.com>
- * @copyright Tomoaki Nagahara All right reserved.
+ * @created    2018-04-04
+ * @version    1.0
+ * @package    op-unit-app
+ * @author     Tomoaki Nagahara
+ * @copyright  Tomoaki Nagahara All right reserved.
  */
 class App implements IF_UNIT, IF_APP
 {
-	/** trait.
+	/**	trait.
 	 *
 	 */
 	use OP_CORE;
 	use \OP\OP_CI;
 
-	/** Content
+	/**	Content
 	 *
 	 * @var string
 	 */
 	static private $_content;
 
-	/** Automatically.
+	/**	Automatically.
 	 *
 	 */
 	function Auto()
@@ -80,7 +80,7 @@ class App implements IF_UNIT, IF_APP
 		try{
 			//	...
 			if( Env::MIME() === 'text/html' ){
-				/** Flexible access methods is a great treasure in onepiece
+				/**	Flexible access methods is a great treasure in onepiece
 				 *
 				 *  1. Hard code to layout from namespace.
 				 *  \OP\UNIT\Layout::Auto();
@@ -105,7 +105,7 @@ class App implements IF_UNIT, IF_APP
 		};
 	}
 
-	/** Output content.
+	/**	Output content.
 	 *
 	 *  This method is intended to be called from a Layout.
 	 *
@@ -117,7 +117,7 @@ class App implements IF_UNIT, IF_APP
 		self::$_content = null;
 	}
 
-	/** Check if the ETag matches.
+	/**	Check if the ETag matches.
 	 *
 	 * <pre>
 	 *  ETag is save on transfer volume.
@@ -134,7 +134,7 @@ class App implements IF_UNIT, IF_APP
 		return include(__DIR__.'/include/ETag.php');
 	}
 
-	/** Get/Set Title for HTML's title tag.
+	/**	Get/Set Title for HTML's title tag.
 	 *
 	 * @param  string  $title
 	 * @param  string  $separator

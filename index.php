@@ -23,20 +23,12 @@ namespace OP;
  */
 require_once(__DIR__.'/App.class.php');
 
-/** If Content() is not called from anywhere, Content will be output now.
+/**	Memory usage is displayed only for admin.
  *
- * @genesis   2009-??-?? op-core-4?
- * @moved     2021-05-05 op-core-7:/function/Content.php
- * @moved     2024-07-08 op-unit-app:/index.php
  */
-/*
-register_shutdown_function(function(){
-	//	...
-	if( \OP\UNIT\App::Hash() ){
-		Notice::Set("The Layout is not calling `App::Content()`");
-	}
-
-	//	...
-	OP()->Unit()->App()->Content();
-});
-*/
+if( OP()->isAdmin() ){
+	register_shutdown_function(function(){
+		//	...
+		include(__DIR__.'/include/memory_usage.php');
+	});
+}

@@ -54,6 +54,11 @@ class App implements IF_APP
 	function __destruct()
 	{
 		//	...
+		if(!empty( self::$_content ) ){
+			D("`App::Content()` is not called.");
+		}
+
+		//	...
 		self::Content();
 	}
 

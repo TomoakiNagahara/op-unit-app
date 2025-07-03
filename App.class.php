@@ -55,12 +55,6 @@ class App implements IF_APP
 	{
 		//	...
 		self::Content();
-
-		//	...
-		if( OP()->isAdmin() ){
-			//	...
-			include(__DIR__.'/include/memory_usage.php');
-		}
 	}
 
 	/**	Automatically.

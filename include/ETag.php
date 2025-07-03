@@ -20,7 +20,7 @@ declare(strict_types=1);
 namespace OP\UNIT\APP;
 
 //	...
-if( \OP\Env::isCI() ){
+if( OP()->isCI() ){
 	return false;
 }
 

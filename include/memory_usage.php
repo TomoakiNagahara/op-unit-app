@@ -15,12 +15,13 @@ namespace OP\UNIT\APP;
 
 //	Go to op-unit-app's register_shutdown_function();
 $time = (microtime ( true ) - _OP_APP_START_);
+$diff =(memory_get_usage () - _OP_MEM_USAGE_) / 1000;
 $used = memory_get_usage () / 1000;
 $peak = memory_get_peak_usage () / 1000;
 
 //	...
 $execute_time = "execute time: {$time}";
-$memory_usage = "memory usage: {$used}KB (max: {$peak}KB)";
+$memory_usage = "memory usage: {$used}KB (app: {$diff}KB, max: {$peak}KB)";
 
 //	...
 switch( OP()->MIME() ){

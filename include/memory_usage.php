@@ -24,7 +24,10 @@ $execute_time = "execute time: {$time}";
 $memory_usage = "memory usage: {$used}KB (app: {$diff}KB, max: {$peak}KB)";
 
 //	...
-switch( OP()->MIME() ){
+$mime = OP()->isHttp() ? OP()->MIME(): 'text/plain';
+
+//	...
+switch( $mime ){
 	case 'text/html':
 		echo "<script>console.log('{$execute_time}, {$memory_usage}');</script>";
 		break;

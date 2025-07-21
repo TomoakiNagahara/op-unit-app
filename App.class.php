@@ -96,7 +96,7 @@ class App implements IF_APP
 			OP()->Template($endpoint);
 
 			//	Get and store content, And finished OB.
-			self::$_content = ob_get_clean();
+			self::$_content = ob_get_contents();
 
 			//	Save memory usage.
 			ob_end_clean();

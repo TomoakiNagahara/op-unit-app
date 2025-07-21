@@ -78,7 +78,7 @@ class App implements IF_APP
 			$extension = substr($endpoint, strrpos($endpoint, '.')+1);
 
 			//	MIME
-			$mime = OP()->MIME($extension);
+			$mime = OP()->isHttp() ? OP()->MIME($extension): 'text/plain';
 
 			//	Not text
 			if( strpos($mime, 'text/') === false ){

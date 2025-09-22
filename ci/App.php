@@ -21,6 +21,11 @@ namespace OP;
 /* @var $ci \OP\UNIT\CI\CI_Config */
 $ci = OP::Unit('CI')::Config();
 
+//	Include sub directory files.
+foreach( glob(__DIR__.'/App/*.php') as $path ){
+	require_once($path);
+}
+
 //	Template
 $method = 'Template';
 $args   = ['ci.txt'];

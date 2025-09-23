@@ -1,0 +1,57 @@
+<?php
+/**	op-unit-app:/tutorial/Title.php
+ *
+ * @created    2025-09-24
+ * @version    1.0
+ * @package    op-unit-app
+ * @author     Tomoaki Nagahara
+ * @copyright  Tomoaki Nagahara All right reserved.
+ */
+
+/**	Declare strict
+ *
+ */
+declare(strict_types=1);
+
+/**	namespace
+ *
+ */
+namespace OP;
+
+?>
+<section class="markdown" data-translation="true">
+# How to Set the Web Page Title
+
+## Overview
+
+The title of a web page is usually set with the &lt;TITLE&gt; tag inside the HTML &lt;HEAD&gt; tag, but in the ONEPIECE Framework, the layout sets it automatically.
+The layout is designed to retrieve the web page title from the config file. The path of the config file is `asset:/config/html.php`.
+The "App" unit can override the value of `asset:/config/html.php` or retrieve the current web page title using `App::Title()`.
+
+## How to usage
+
+### Setting the Title
+
+You can add to the existing title using the following method chain.
+The added title will be placed at the beginning.
+
+```php
+OP()->Unit()->App()->Title('TOP');
+```
+
+### Getting the Title
+
+You can retrieve the current title using the following method chain.
+
+```php
+$title = OP()->Unit()->App()->Title();
+```
+
+### Changing the Title
+
+If you want to completely replace the title instead of adding to the existing one, modify the config file: `asset:/config/html.php`.
+
+```php
+OP()->Config('html', ['title'=>'Welcome to my page!']);
+```
+</section>

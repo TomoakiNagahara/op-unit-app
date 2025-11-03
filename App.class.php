@@ -60,17 +60,23 @@ class App implements IF_UNIT, IF_APP
 				return;
 			}
 
-			//	OB is start.
-			ob_start();
-
 			//	Since the full path cannot be used, It is convert to a meta path.
 			$endpoint = OP()->MetaPath($endpoint);
+
+			//	Switch to CLI or HTTP
+			if( OP()->Env()->isShell() ){
+				//	This change is to support interactive mode.
+				OP()->Template($endpoint);
+			}else{
+			//	Caches the output.
+			ob_start();
 
 			//	Execute the End-Point.
 			OP()->Template($endpoint);
 
-			//	Get and store content, And finished OB.
+			//	Get the content and save it, and flush the cache.
 			self::$_content = ob_get_clean();
+			}
 
 		}catch( \Throwable $e ){
 			OP()->Notice($e);

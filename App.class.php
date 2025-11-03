@@ -63,20 +63,11 @@ class App implements IF_UNIT, IF_APP
 			//	OB is start.
 			ob_start();
 
-			//	Save original directory.
-			$_original_directory = getcwd();
-
-			//	Change to the end-point directory.
-			chdir( dirname($endpoint) );
-
 			//	Since the full path cannot be used, It is convert to a meta path.
 			$endpoint = OP()->MetaPath($endpoint);
 
 			//	Execute the End-Point.
 			OP()->Template($endpoint);
-
-			//	Recovery original directory.
-			chdir($_original_directory);
 
 			//	Get and store content, And finished OB.
 			self::$_content = ob_get_clean();

@@ -91,6 +91,8 @@ class App implements IF_APP
 
 			//	Switch to CLI or HTTP
 			if( OP()->isShell() ){
+				//	...
+				OP()->MIME('text/plain');
 				//	This change is to support interactive mode.
 				OP()->Template($endpoint);
 			}else{

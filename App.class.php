@@ -172,22 +172,6 @@ class App implements IF_APP
 	 */
 	static function Origin() : string
 	{
-		//	...
-		if( OP()->isCI() ){
-			return 'isCI';
-		}
-
-		//	...
-		$scheme = $_SERVER['REQUEST_SCHEME'] ?? ($_SERVER['SERVER_PORT'] == 443 ? 'https' : 'http');
-		$domain = $_SERVER['SERVER_NAME']; // HTTP_HOST contains the port number. It may just be PHP Built-in Web Server.
-		$port   = $_SERVER['SERVER_PORT'] == 80 ? '' : $_SERVER['SERVER_PORT'];
-
-		//	...
-		if( $port ){
-			$port = ':' . $port;
-		}
-
-		//	...
-		return "{$scheme}://{$domain}{$port}";
+		return include(__DIR__.'/include/Origin.php');
 	}
 }

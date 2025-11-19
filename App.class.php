@@ -132,8 +132,21 @@ class App implements IF_APP
 	 */
 	static public function Content()
 	{
-		echo self::$_content;
-		self::$_content = null;
+		//	...
+		if( self::$_content ){
+			echo self::$_content;
+			self::$_content = null;
+
+			//	...
+			if( OP()->MIME() === 'text/html' ){
+				//	finger print
+				if(!$fingerprint = OP()->Session()->Get('fingerprint') ){
+					$fingerprint = self::FingerPrint();
+					OP()->Session()->Set('fingerprint', $fingerprint);
+				}
+				echo "\t<div data-content-hash=\"{$fingerprint}\"></div>\n";
+			}
+		}
 	}
 
 	/**	Check if the ETag matches.
@@ -173,5 +186,23 @@ class App implements IF_APP
 	static function Origin() : string
 	{
 		return include(__DIR__.'/include/Origin.php');
+	}
+
+	/**	Return encrypted finger print.
+	 *
+	 * @created    2025-11-19
+	 * @return     string
+	 */
+	static function FingerPrint() : string
+	{
+		//	...
+		$fingerprint =  [
+			'core uuid' => OP()->Cookie()->UserID(),
+			'timestamp' => OP()->Timestamp(),
+			'ipaddress' => $_SERVER['REMOTE_ADDR'],
+		];
+
+		//	...
+		return OP()->Encrypt($fingerprint);
 	}
 }

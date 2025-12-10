@@ -13,6 +13,11 @@
  */
 namespace OP\UNIT\APP;
 
+//	...
+if( OP()->isCI() ){
+	return;
+}
+
 //	Go to op-unit-app's register_shutdown_function();
 $time = (microtime ( true ) - _OP_APP_START_);
 $diff =(memory_get_usage () - _OP_MEM_USAGE_) / 1000;
